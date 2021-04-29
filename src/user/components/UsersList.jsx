@@ -1,7 +1,7 @@
 import React from 'react';
 import UsersItem from './UsersItem';
 import { Card } from '../../shared';
-import './UsersList.css';
+import styled from 'styled-components';
 
 const UsersList = props => {
     if (props.items.length === 0) {
@@ -15,7 +15,7 @@ const UsersList = props => {
     };
 
     return (
-        <ul className="users-list">
+        <UL className="users-list">
             {props.items.map(user => (
                 <UsersItem
                     key={user.id}
@@ -25,8 +25,18 @@ const UsersList = props => {
                     placeCount={user.places}
                 />
             ))}
-        </ul>
+        </UL>
     )
 }
 
+const UL = styled.ul`
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 90%;
+    max-width: 50rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+`
 export default UsersList
