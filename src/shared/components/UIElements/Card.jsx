@@ -1,13 +1,21 @@
 import React from 'react';
-
-import './Card.css';
+import styled from 'styled-components';
 
 const Card = props => {
   return (
-    <div className={`card ${props.className}`} style={props.style}>
+    <Wrapper className={`card ${props.className}`} style={props.style}>
       {props.children}
-    </div>
+    </Wrapper>
   );
 };
 
+const Wrapper = styled.div`
+  position: relative;
+  margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow: hidden;
+  background: white;
+`
 export default Card;
