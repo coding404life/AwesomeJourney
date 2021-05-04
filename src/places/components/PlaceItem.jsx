@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import styled from 'styled-components';
-import { Button, Card, Modal } from '../../shared'
-import { createGlobalStyle } from 'styled-components';
+import React, { useState } from 'react';
+import { Button, Card, Modal, Map } from '../../shared';
+import './PlaceItem.css';
 
 const PlaceItem = props => {
   const [ showMap, setShowMap ] = useState(false)
@@ -12,7 +11,6 @@ const PlaceItem = props => {
 
   return (
     <React.Fragment>
-      <GlobalStyle />
       <Modal
         show={showMap}
         onCancel={closeMapHandler}
@@ -21,11 +19,11 @@ const PlaceItem = props => {
         footerClass='place-item__modal-actions'
         footer={<Button onClick={closeMapHandler}>Close</Button>}
       >
-        <div className='map-container'>
-          <h2>fcking map</h2>
+        <div className='map__container'>
+          <Map center={props.coordinates} zoom={13} />
         </div>
       </Modal>
-      <ListWrapper>
+      <li>
         <Card className='place-item__content'>
           <div className='place-item__image'>
             <img src={props.image} alt={props.title} />
@@ -41,72 +39,10 @@ const PlaceItem = props => {
             <Button danger>DELTE</Button>
           </div>
         </Card>
-      </ListWrapper>
+      </li>
     </React.Fragment>
   )
 }
 
-const GlobalStyle = createGlobalStyle`
-  .place-item__modal-content {
-    padding: 0;
-  }
-
-  .place-item__modal-actions {
-    text-align: right;
-  }
-  .map-container {
-    height: 20rem;
-    width: 100%;
-  }
-`
-
-const ListWrapper = styled.li`
-  margin: 1rem 0;
-
-.place-item__content {
-  padding: 0;
-}
-
-.place-item__info {
-  padding: 1rem;
-  text-align: center;
-}
-
-.place-item__image {
-  width: 100%;
-  height: 12.5rem;
-  margin-right: 1.5rem;
-}
-
-.place-item__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.place-item__info h2,
-.place-item__info h3,
-.place-item__info p {
-  margin: 0 0 0.5rem 0;
-}
-
-.place-item__actions {
-  padding: 1rem;
-  text-align: center;
-  border-top: 1px solid #ccc;
-}
-
-
-.place-item__actions button,
-.place-item__actions a {
-  margin: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  .place-item__image {
-    height: 20rem;
-  }
-}
-`
 
 export default PlaceItem
