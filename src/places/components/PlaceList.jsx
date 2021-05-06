@@ -1,22 +1,22 @@
-import React from 'react'
-import styled from 'styled-components';
-import { Card } from '../../shared'
-import PlaceItem from './PlaceItem';
+import React from "react";
+import styled from "styled-components";
+import { Button, Card } from "../../shared";
+import PlaceItem from "./PlaceItem";
 
-const PlaceList = props => {
+const PlaceList = (props) => {
   if (props.items.length === 0) {
     return (
-      <Wrapper className='center'>
+      <Wrapper className="center">
         <Card>
           <h2>No places found. maybe create one?</h2>
-          <button>Share Place</button>
+          <Button to="places/new">Share Place</Button>
         </Card>
       </Wrapper>
-    )
+    );
   }
   return (
     <UL>
-      {props.items.map(place => (
+      {props.items.map((place) => (
         <PlaceItem
           key={place.id}
           id={place.id}
@@ -26,11 +26,11 @@ const PlaceList = props => {
           address={place.address}
           creatorId={place.creator}
           coordinates={place.location}
-        />)
-      )}
+        />
+      ))}
     </UL>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   list-style: none;
@@ -42,17 +42,13 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 const UL = styled.ul`
   list-style: none;
   margin: 1rem auto;
   padding: 0;
   width: 90%;
   max-width: 40rem;
-`
+`;
 
-
-
-
-export default PlaceList
-
+export default PlaceList;
