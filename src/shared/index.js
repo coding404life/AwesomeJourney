@@ -9,3 +9,5 @@ export { default as Map } from './components/UIElements/Map';
 //FormElements exports
 export { default as Button } from './components/FormElements/Button';
 export { default as Input } from './components/FormElements/Input';
+//context
+export { AuthContext } from './context/auth-context'
